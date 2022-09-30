@@ -18,15 +18,10 @@ import java.util.regex.Pattern;
 
 public final class TemplateReplacer {
     private static final Logger logger = LoggerFactory.getLogger(TemplateReplacer.class);
-    private static Class<? extends FileLoader> fileLoaderClass;
-    private static volatile TemplateReplacer INSTANCE = new TemplateReplacer(FileLoaderImpl.class);
-
-    private TemplateReplacer(Class<? extends FileLoader> fileLoaderClass) {
-        TemplateReplacer.fileLoaderClass = fileLoaderClass;
-    }
+    private static Class<? extends FileLoader> fileLoaderClass = FileLoaderImpl.class;
 
     public static void setFileLoader(Class<? extends FileLoader> fileLoaderClass) {
-        INSTANCE = new TemplateReplacer(fileLoaderClass);
+        TemplateReplacer.fileLoaderClass = fileLoaderClass;
     }
 
     private static @NotNull List<String> getFileLines(
