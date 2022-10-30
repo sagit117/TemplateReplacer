@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'ru.axel.template.replacer'
-version '1.0.0'
+version '1.0.1'
 
 repositories {
     mavenCentral()
@@ -15,10 +15,8 @@ repositories {
 
 dependencies {
     implementation(files(
-            "libs/FileLoader-1.0.1.jar",
-            "libs/CreatorInstances-1.0.2.jar"
+        "libs/FileLoader-1.0.3.jar",
     ))
-    implementation 'ch.qos.logback:logback-classic:1.4.1'
     implementation 'org.jetbrains:annotations:23.0.0'
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
