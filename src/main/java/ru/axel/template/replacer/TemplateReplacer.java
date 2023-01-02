@@ -1,36 +1,18 @@
 package ru.axel.template.replacer;
 
 import org.jetbrains.annotations.NotNull;
-import ru.axel.fileloader.FileLoader;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public final class TemplateReplacer {
-    private static @NotNull List<String> getFileLines(
-        String path
-    ) throws IOException, URISyntaxException {
-        final FileLoader loader = new FileLoader(path);
-        return loader.getFileData();
-    }
-    private static @NotNull List<String> getFileLines(
-        URL path
-    ) throws IOException, URISyntaxException {
-        final FileLoader loader = new FileLoader(path);
-        return loader.getFileData();
-    }
-
     public static @NotNull String templating(
-        URL path,
+        @NotNull List<String> lines,
         HashMap<String, Object> data
-    ) throws IOException, URISyntaxException {
+    ) {
         final StringBuilder body = new StringBuilder();
-        final var lines = getFileLines(path);
         final Pattern pattern = Pattern.compile("[{]{2}([\\w|d]+)[}]{2}");
 
         lines.forEach(line -> {
